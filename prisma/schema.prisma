@@ -8,13 +8,24 @@ datasource db {
 }
 
 model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  published Boolean  @default(false)
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  title     String    @db.VarChar(255)
+  published Boolean   @default(false)
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+  Comment   Comment[]
+}
+
+model Comment {
+  id       String   @id @default(cuid())
+  message  String
+  postId   String
+  userId   String
+  createAt DateTime @default(now())
+  post     Post     @relation(fields: [postId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
 }
 
 model Account {
@@ -53,6 +64,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Post          Post[]
+  Comment       Comment[]
 }
 
 model VerificationToken {

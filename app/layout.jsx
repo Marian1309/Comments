@@ -1,7 +1,8 @@
-import { LayoutWrapper } from '@utils'
 import clsx from 'clsx'
 
 import { Navigation } from '@components/auth'
+
+import { LayoutWrapper } from '@utils'
 
 import { jetbrains } from '@fonts'
 

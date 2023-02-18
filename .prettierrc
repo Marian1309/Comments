@@ -9,8 +9,10 @@
   "useTabs": false,
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
+    "^@prisma",
     "^@components",
     "^@api",
+    "^@utils",
     "^@icons",
     "^@fonts",
     "^@types",

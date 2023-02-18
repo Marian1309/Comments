@@ -10,6 +10,7 @@ import { Id, toast } from 'react-toastify'
 export default function CreatePost() {
   const [title, setTitle] = useState<string>('')
   const [isDisabled, setIsDisabled] = useState<boolean>(false)
+  // const queryClient = useQueryClient()
   let toastId: Id
 
   // Craete a post
@@ -23,9 +24,10 @@ export default function CreatePost() {
         }
         setIsDisabled(false)
       },
-      onSuccess: (data) => {
+      onSuccess: () => {
         toast.dismiss(toastId)
         ToastSuccess('Post has been made 🎉')
+        // queryClient.invalidateQueries()
         setTitle('')
         setIsDisabled(false)
       }
