@@ -21,9 +21,20 @@
       "@icons": ["./public/icons"],
       "@types": ["./@types.ts"],
       "@/*": ["./app/*"],
-      "@prisma": ["./prisma/client.ts"]
+      "@prisma": ["./prisma/client.ts"],
+      "@globals": ["./styles/globals.scss"],
+      "@components/*": ["./components/*"],
+      "@api/*": ["./pages/api/*"],
+      "@utils": ["./utils"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "prisma/client.ts",
+    "app/layout.jsx"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ['./app/**/*.{ts,tsx,scss}'],
+  content: [
+    './app/**/*.{js,jsx,ts,tsx,scss}',
+    './components/**/*.{js,jsx,ts,tsx,scss}'
+  ],
   theme: {
     extend: {
       screens: {

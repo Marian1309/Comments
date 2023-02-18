@@ -7,7 +7,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: []
+    domains: ['lh3.googleusercontent.com', 'avatars.githubusercontent.com']
   },
   compiler: {
     removeConsole: {
@@ -18,18 +18,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
-  trailingSlash: false,
-
-  modularizeImports: {
-    react: {
-      transform: 'react/{{ lowerCase member }}',
-      skipDefaultConversion: true
-    },
-    next: {
-      transform: 'next/{{ lowerCase member }}',
-      skipDefaultConversion: true
-    }
-  }
+  trailingSlash: false
 }
 
 module.exports = nextConfig

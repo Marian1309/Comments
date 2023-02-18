@@ -1,5 +1,22 @@
-import styles from './page.module.scss'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
-export default async function HomePage() {
-  return <div className={styles.container}>Starter</div>
+import { CreatePost } from '@components/actions'
+
+const fetchAllPosts = async () => {
+  const { data } = await axios.get('/api/posts/getPosts')
+  return data
+}
+
+export default function HomePage() {
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['posts'],
+    queryFn: fetchAllPosts
+  })
+
+  return (
+    <>
+      <CreatePost />
+    </>
+  )
 }

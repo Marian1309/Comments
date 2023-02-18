@@ -8,7 +8,7 @@ export default function Head() {
       <meta content='' name='keywords' />
 
       <link href='/icons/favicon.ico' rel='shortcut icon' />
-      <title>Next 13</title>
+      <title>Comments</title>
     </>
   )
 }
