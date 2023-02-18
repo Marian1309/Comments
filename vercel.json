@@ -1,0 +1,5 @@
+{
+  "installCommand": "pnpm install",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "trailingS;ash": false
+}
