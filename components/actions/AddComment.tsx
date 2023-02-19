@@ -21,11 +21,10 @@ export default function AddComment({ id }: { id: string }) {
           ToastError(error.response?.data.message)
         }
       },
-      onSuccess: (data) => {
+      onSuccess: () => {
         setTitle('')
         setIsDisabled(false)
         queryClient.invalidateQueries(['detail-post'])
-
         ToastSuccess('Toast has been added')
       }
     }
@@ -45,7 +44,7 @@ export default function AddComment({ id }: { id: string }) {
       className='my-8 mx-auto max-w-[1000px] text-black'
       onSubmit={handleSubmit}
     >
-      <h3>Add a comment</h3>
+      <h3 className='text-white'>Add a comment</h3>
 
       <div className='my-2 flex flex-col'>
         <input
@@ -66,7 +65,7 @@ export default function AddComment({ id }: { id: string }) {
           Add Comment 🚀
         </button>
         <p
-          className={`font-bold  ${
+          className={`text-white ${
             title.length > 300 ? 'text-red-700' : 'text-gray-700'
           } `}
         >{`${title.length}/300`}</p>

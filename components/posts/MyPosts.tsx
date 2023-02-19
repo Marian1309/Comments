@@ -5,6 +5,8 @@ import axios from 'axios'
 
 import { EditPost } from '@components/actions'
 
+import { PostType } from '@types'
+
 const fetchAuthPosts = async () => {
   const { data } = await axios.get('/api/posts/authPosts')
   return data
@@ -22,14 +24,14 @@ export default function MyPosts() {
 
   return (
     <div className='text-gray-700'>
-      {data?.Post?.map((post: any) => (
+      {data?.Post?.map((post: PostType) => (
         <EditPost
           key={post.id}
           id={post.id}
           avatar={data.image}
           name={data.name}
           title={post.title}
-          comments={post.comments}
+          comments={post.Comment}
         />
       ))}
     </div>

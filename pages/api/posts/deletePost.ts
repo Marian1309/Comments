@@ -9,16 +9,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const session = await getServerSession(req, res, authOptions)
+
+  if (!session) {
+    return res.status(401).json({ message: 'Please sign in to make a post' })
+  }
+
   if (req.method === 'DELETE') {
-    const session = await getServerSession(req, res, authOptions)
-
-    if (!session) {
-      return res.status(401).json({ message: 'Please sign in to make a post' })
-    }
-
     try {
-      const { postId } = req.body
-      console.log(postId)
+      const postId = req.body
 
       const result = await prisma.post.delete({
         where: {
@@ -26,11 +25,9 @@ export default async function handler(
         }
       })
 
-      return res.status(200).json(result)
+      res.status(200).json(result)
     } catch (err) {
-      return res
-        .status(403)
-        .json({ err: 'Error has occured while making a post' })
+      res.status(403).json({ message: 'Error has occured while making a post' })
     }
   }
 }
