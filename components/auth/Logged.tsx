@@ -9,15 +9,11 @@ interface LoggedProps {
 }
 
 export default function Logged({ userImage }: LoggedProps) {
-  const handleExit = () => {
-    signOut()
-  }
-
   return (
     <li className='flex items-center gap-8'>
       <button
         className='rounded-md bg-gray-700 px-6 py-3 text-sm text-white'
-        onClick={handleExit}
+        onClick={() => signOut()}
       >
         Sign Out
       </button>

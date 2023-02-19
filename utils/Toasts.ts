@@ -1,4 +1,4 @@
-import { ToastOptions, toast } from 'react-toastify'
+import { Id, ToastOptions, toast } from 'react-toastify'
 
 export const toastOptions: ToastOptions = {
   position: 'top-right',
@@ -26,4 +26,8 @@ export const ToastLoading = (message: string) => {
 
 export const ToastInfo = (message: string) => {
   return toast.info(message, toastOptions)
+}
+
+export const ToastDismiss = (toastId: Id) => {
+  return toast.dismiss(toastId)
 }

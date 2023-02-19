@@ -13,7 +13,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <main>
+    <main className='m-w-[1000px] mx-auto'>
       <h1 className='text-2xl font-bold'>Welcome back {session.user?.name}</h1>
 
       <MyPosts />

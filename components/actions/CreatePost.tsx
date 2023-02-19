@@ -1,16 +1,17 @@
 'use client'
 
-import { useMutation } from '@tanstack/react-query'
-import { ToastError, ToastLoading, ToastSuccess } from '@utils'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
 import clsx from 'clsx'
 import { FormEvent, useState } from 'react'
 import { Id, toast } from 'react-toastify'
 
+import { ToastError, ToastLoading, ToastSuccess } from '@utils'
+
 export default function CreatePost() {
   const [title, setTitle] = useState<string>('')
   const [isDisabled, setIsDisabled] = useState<boolean>(false)
-  // const queryClient = useQueryClient()
+  const queryClient = useQueryClient()
   let toastId: Id
 
   // Craete a post
@@ -27,7 +28,7 @@ export default function CreatePost() {
       onSuccess: () => {
         toast.dismiss(toastId)
         ToastSuccess('Post has been made 🎉')
-        // queryClient.invalidateQueries()
+        queryClient.invalidateQueries(['posts'])
         setTitle('')
         setIsDisabled(false)
       }

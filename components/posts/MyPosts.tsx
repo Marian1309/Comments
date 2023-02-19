@@ -16,8 +16,6 @@ export default function MyPosts() {
     queryFn: fetchAuthPosts
   })
 
-  console.log(data)
-
   if (isLoading) {
     return <h1>Posts are loading...</h1>
   }

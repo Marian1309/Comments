@@ -12,7 +12,7 @@ export default async function Navigation() {
   return (
     <nav className='flex items-center justify-between py-8'>
       <Link href='/'>
-        <h1 className='text-lg font-bold'>Send It.</h1>
+        <h1 className='text-lg text-white'>Comments</h1>
       </Link>
 
       <ul className='flex items-center gap-6'>
