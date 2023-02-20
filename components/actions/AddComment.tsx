@@ -5,7 +5,7 @@ import axios, { AxiosError } from 'axios'
 import { FormEvent, useState } from 'react'
 import { Id, toast } from 'react-toastify'
 
-import { ToastError, ToastLoading, ToastSuccess } from '@utils'
+import { ToastDismiss, ToastError, ToastLoading, ToastSuccess } from '@utils'
 
 export default function AddComment({ id }: { id: string }) {
   const [title, setTitle] = useState<string>('')
@@ -16,16 +16,18 @@ export default function AddComment({ id }: { id: string }) {
       await axios.post('/api/posts/addComment', { data }),
     {
       onError: (error) => {
+        ToastDismiss(addCommentToastId)
         setIsDisabled(false)
         if (error instanceof AxiosError) {
           ToastError(error.response?.data.message)
         }
       },
       onSuccess: () => {
+        ToastDismiss(addCommentToastId)
         setTitle('')
         setIsDisabled(false)
         queryClient.invalidateQueries(['detail-post'])
-        ToastSuccess('Toast has been added')
+        ToastSuccess('Comment has been added')
       }
     }
   )
@@ -36,7 +38,6 @@ export default function AddComment({ id }: { id: string }) {
     setIsDisabled(false)
     addCommentToastId = ToastLoading('Adding your comment')
     mutate({ title, postId: id })
-    toast.dismiss(addCommentToastId)
   }
 
   return (

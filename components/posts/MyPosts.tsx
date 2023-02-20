@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 import { EditPost } from '@components/actions'
+import { Spinner } from '@components/icons'
 
 import { PostType } from '@types'
 
@@ -19,21 +20,27 @@ export default function MyPosts() {
   })
 
   if (isLoading) {
-    return <h1>Posts are loading...</h1>
+    return (
+      <div className='flex items-center justify-center'>
+        <Spinner />
+      </div>
+    )
   }
 
   return (
     <div className='text-gray-700'>
-      {data?.Post?.map((post: PostType) => (
-        <EditPost
-          key={post.id}
-          id={post.id}
-          avatar={data.image}
-          name={data.name}
-          title={post.title}
-          comments={post.Comment}
-        />
-      ))}
+      {data?.Post?.map((post: PostType) => {
+        return (
+          <EditPost
+            key={post.id}
+            id={post.id}
+            avatar={data.image}
+            name={data.name}
+            title={post.title}
+            comments={post.Comment}
+          />
+        )
+      })}
     </div>
   )
 }

@@ -20,6 +20,7 @@ export default function CreatePost() {
       await axios.post('/api/posts/createPost', { title }),
     {
       onError: (error) => {
+        toast.dismiss(toastId)
         if (error instanceof AxiosError) {
           ToastError(error?.response?.data.message)
         }

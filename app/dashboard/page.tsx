@@ -13,7 +13,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <main className='m-w-[1000px] mx-auto'>
+    <main className='mx-auto max-w-[1000px]'>
       <h1 className='text-2xl'>
         Welcome back <span className='font-bold'>{session.user?.name}</span>
       </h1>

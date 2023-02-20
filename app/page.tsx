@@ -15,7 +15,7 @@ const fetchAllPosts = async () => {
 }
 
 export default function HomePage() {
-  const { data, error, isLoading } = useQuery<PostType[]>({
+  const { data, isLoading } = useQuery<PostType[]>({
     queryKey: ['posts'],
     queryFn: fetchAllPosts
   })
@@ -24,7 +24,19 @@ export default function HomePage() {
     <>
       <CreatePost />
 
-      {isLoading ? <Spinner /> : <Posts data={data} />}
+      <div>
+        {isLoading ? (
+          <div className='flex flex-col items-center justify-center'>
+            <Spinner />
+          </div>
+        ) : !data?.length ? (
+          <div className='flex items-center justify-center text-[20px]'>
+            Here is no posts
+          </div>
+        ) : (
+          <Posts data={data} />
+        )}
+      </div>
     </>
   )
 }

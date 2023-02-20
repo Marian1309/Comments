@@ -29,7 +29,9 @@ export default function PostDetailsPage(url: URL) {
   return (
     <>
       {isLoading ? (
-        <Spinner />
+        <div className='flex items-center justify-center'>
+          <Spinner />
+        </div>
       ) : (
         <Post
           id={data?.id}
@@ -47,7 +49,7 @@ export default function PostDetailsPage(url: URL) {
           animate={{ opacity: 1, scale: 1 }}
           initial={{ opacity: 0, scale: 0.8 }}
           transition={{ ease: 'easeOut' }}
-          className='my-6 mx-auto max-w-[1000px] rounded-md bg-white p-8 text-black'
+          className='my-4 mx-auto max-w-[1000px] rounded-md bg-white p-8 text-black'
           key={comment.id}
         >
           <div className='flex items-center gap-2'>
